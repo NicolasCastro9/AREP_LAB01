@@ -2,6 +2,8 @@
 
 Este es un proyecto Java que utiliza Maven para gestionar dependencias y construir el código. El proyecto realiza conexiones HTTP a la API de OMDB para obtener información sobre películas y utiliza una memoria caché para almacenar la información obtenida.
 
+
+
 ## Pre-Requisitos
 
 Asegúrate de tener instalado Java y Maven en tu máquina antes de ejecutar el proyecto.
@@ -31,6 +33,21 @@ Asegúrate de tener instalado Java y Maven en tu máquina antes de ejecutar el p
 ![image](https://github.com/NicolasCastro9/AREP_LAB01/assets/98556822/301caaa6-f0e6-4cb1-af1f-3e0c658115ed)
 
 ![image](https://github.com/NicolasCastro9/AREP_LAB01/assets/98556822/26c12aab-1d92-4b00-a82e-111ca790ef9e)
+
+![image](https://github.com/NicolasCastro9/AREP_LAB01/assets/98556822/6d6f1ce3-17e7-4f46-897a-00d54562b904)
+
+
+
+## Dependencias
+JUnit: Framework de pruebas unitarias para Java.
+Gson: Biblioteca de Google para trabajar con JSON en Java.
+
+## Autor
+### Nicolás Castro Jaramillo
+
+## Licencia
+Este proyecto está bajo la licencia MIT.
+
 
 
 
