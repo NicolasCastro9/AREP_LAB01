@@ -8,7 +8,7 @@ import java.net.URL;
 
 
 /**
- * Clase que realiza la conexión HTTP con la API de OMDB para obtener información de películas.
+ * Clase que realiza la conexión HTTP con la API de OMDB para obtener informacion de películas.
  */
 public class HttpConnection {
     private static final String USER_AGENT = "Mozilla/5.0";
@@ -16,14 +16,14 @@ public class HttpConnection {
     private static final String API_KEY = "a8496578";
 
     /**
-     * Metodo que realiza una solicitud GET a la API de OMDB para obtener información de una película solicitada.
+     * Metodo que realiza una solicitud GET a la API de OMDB para obtener informacion de una pelicula solicitada.
      *
-     * @param title Título de la película.
+     * @param title Titulo de la película.
      * @return Respuesta de la API en formato JSON.
-     * @throws IOException Si ocurre un error de entrada/salida durante la conexión.
+     * @throws IOException Si ocurre un error de entrada/salida durante la conexion.
      */
     public static String getMovie(String title) throws IOException {
-        // Construye la URL de la API de OMDB con el título de la película y la clave API
+        // Construye la URL de la API de OMDB con el titulo de la pelicula y la clave API
         String apiUrl = API_URL + "?t=" + title + "&apikey=" + API_KEY;
         URL url = new URL(apiUrl);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();

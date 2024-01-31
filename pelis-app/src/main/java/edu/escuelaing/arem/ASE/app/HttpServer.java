@@ -10,8 +10,8 @@ import java.util.Objects;
 public class HttpServer {
 
     /**
-     * Método principal de la clase que inicia el servidor y escucha conexiones en el puerto 35000.
-     * @param args Argumentos de línea de comandos (no utilizados).
+     * Metodo principal de la clase que inicia el servidor y escucha conexiones en el puerto 35000.
+     * @param args Argumentos de linea de comandos (no utilizados).
      * @throws IOException Si ocurre un error de entrada/salida al abrir el socket del servidor.
      */
     public static void main(String[] args) throws IOException {

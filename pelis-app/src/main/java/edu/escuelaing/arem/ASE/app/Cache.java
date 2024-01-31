@@ -6,29 +6,29 @@ import java.util.List;
 
 
 /**
- * Clase que implementa una caché  para almacenar información de películas.
+ * Clase que implementa una cache  para almacenar informacion de películas.
  */
 public class Cache {
     /**
-     * HashMap que almacena la información de las películas en memoria caché.
+     * HashMap que almacena la informacion de las películas en memoria cache.
      */
     public static HashMap<String,String> movies = new HashMap<>();
      /**
-     * Metodo que obtiene la información de una película desde la memoria caché o la API de OMDB cuando se busca por primera vez.
+     * Metodo que obtiene la informacion de una película desde la memoria caché o la API de OMDB cuando se busca por primera vez.
      *
-     * @param titulo Título de la película.
-     * @return Cadena HTML con la información de la película.
+     * @param titulo Título de la pelicula.
+     * @return Cadena HTML con la informacion de la película.
      * @throws IOException Si ocurre un error de entrada/salida al realizar la solicitud a la API.
      */
     public static String inMemory(String titulo) throws IOException {
         String n = "";
 
     if (movies.containsKey(titulo)) {
-        // Si la información está en la memoria caché, se obitiene la información almacenada
+        // Si la información está en la memoria cache, se obitiene la informacion almacenada
         String jsonMovie = movies.get(titulo);
         n += buildHtmlFromJson(jsonMovie);
     } else {
-        // Si la información no está en el caché, se realiza la solicitud a la API de OMDB
+        // Si la informacion no esta en el cache, se realiza la solicitud a la API de OMDB
         String jsonMovie = HttpConnection.getMovie(titulo);
         movies.put(titulo, jsonMovie);
         n += buildHtmlFromJson(jsonMovie);
@@ -39,7 +39,7 @@ public class Cache {
     }
 
     /**
-     * Metodo que construye una cadena HTML a partir de la información de la película en formato JSON.
+     * Metodo que construye una cadena HTML a partir de la informacion de la película en formato JSON.
      *
      * @param jsonMovie Información de la película en formato JSON.
      * @return Cadena HTML con la información de la película.
@@ -48,7 +48,7 @@ public class Cache {
         Gson gson = new Gson();
         MovieInfo movieInfo = gson.fromJson(jsonMovie, MovieInfo.class);
     
-        // Se construye la cadena con la información de la película
+        // Se construye la cadena con la informacion de la película
         StringBuilder htmlBuilder = new StringBuilder();
         htmlBuilder.append("<strong>Title:</strong> ").append(movieInfo.getTitle()).append("<br>");
         htmlBuilder.append("<strong>Year:</strong> ").append(movieInfo.getYear()).append("<br>");

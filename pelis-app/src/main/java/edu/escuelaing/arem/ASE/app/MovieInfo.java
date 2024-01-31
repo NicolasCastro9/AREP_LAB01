@@ -3,7 +3,7 @@ package edu.escuelaing.arem.ASE.app;
 import java.util.List;
 
 /**
- * Clase que representa la información de una película obtenida de la API de OMDB.
+ * Clase que representa la información de una pelicula obtenida de la API de OMDB.
  */
 public class MovieInfo {
     private String Title;
@@ -25,113 +25,113 @@ public class MovieInfo {
 
 
     /**
-     * Obtiene el título de la película.
-     * @return Título de la película.
+     * Obtiene el titulo de la pelicula.
+     * @return Título de la pelicula.
      */
     public String getTitle() {
         return Title;
     }
     /**
-     * Obtiene el año de la película.
-     * @return año de la película.
+     * Obtiene el año de la pelicula.
+     * @return año de la pelicula.
      */
     public String getYear() {
         return Year;
     }
     /**
-     * Obtiene calificacion de la película.
-     * @return calificacion de la película.
+     * Obtiene calificacion de la pelicula.
+     * @return calificacion de la pelicula.
      */
     public String getRated() {
         return Rated;
     }
     /**
-     * Obtiene el lanzamiento de la película.
-     * @return lanzamiento de la película.
+     * Obtiene el lanzamiento de la pelicula.
+     * @return lanzamiento de la pelicula.
      */
     public String getReleased() {
         return Released;
     }
     /**
-     * Obtiene duración de la película.
-     * @return duración de la película.
+     * Obtiene duración de la pelicula.
+     * @return duración de la pelicula.
      */
     public String getRuntime() {
         return Runtime;
     }
     /**
-     * Obtiene el genero de la película.
-     * @return genero de la película.
+     * Obtiene el genero de la pelicula.
+     * @return genero de la pelicula.
      */
     public String getGenre() {
         return Genre;
     }
     /**
-     * Obtiene el director de la película.
-     * @return director de la película.
+     * Obtiene el director de la pelicula.
+     * @return director de la pelicula.
      */
     public String getDirector() {
         return Director;
     }
     /**
-     * Obtiene el escritor de la película.
-     * @return escritor de la película.
+     * Obtiene el escritor de la pelicula.
+     * @return escritor de la pelicula.
      */
     public String getWriter() {
         return Writer;
     }
     /**
-     * Obtiene los actores de la película.
-     * @return actores de la película.
+     * Obtiene los actores de la pelicula.
+     * @return actores de la pelicula.
      */
     public String getActors() {
         return Actors;
     }
     /**
-     * Obtiene el argumento de la película.
-     * @return argumento de la película.
+     * Obtiene el argumento de la pelicula.
+     * @return argumento de la pelicula.
      */
     public String getPlot() {
         return Plot;
     }
     /**
-     * Obtiene el idioma de la película.
-     * @return idioma de la película.
+     * Obtiene el idioma de la pelicula.
+     * @return idioma de la pelicula.
      */
 
     public String getLanguage() {
         return Language;
     }
     /**
-     * Obtiene el pais de origen de la película.
-     * @return pais de origen de la película.
+     * Obtiene el pais de origen de la pelicula.
+     * @return pais de origen de la pelicula.
      */
     public String getCountry() {
         return Country;
     }
     /**
-     * Obtiene el poster de la película.
-     * @return poster de la película.
+     * Obtiene el poster de la pelicula.
+     * @return poster de la pelicula.
      */
     public String getPoster() {
         return Poster;
     }
     /**
-     * Obtiene los premios de la película.
-     * @return premios de la película.
+     * Obtiene los premios de la pelicula.
+     * @return premios de la pelicula.
      */
     public String getAwards() {
         return Awards;
     }
     /**
-     * Obtiene el dinero recaudado de la película.
-     * @return dinero recaudado de la película.
+     * Obtiene el dinero recaudado de la pelicula.
+     * @return dinero recaudado de la pelicula.
      */
     public String getBoxOffice() {
         return BoxOffice;
     }
     /**
-     * Obtiene la lista de clasificaciones de la película.
+     * Obtiene la lista de clasificaciones de la pelicula.
      * @return Lista de clasificaciones.
      */
     public List<Rating> getRatings() {
@@ -139,7 +139,7 @@ public class MovieInfo {
     }
 
     /**
-     * Clase interna que representa una clasificación de la película.
+     * Clase interna que representa una clasificación de la pelicula.
      */
     public static class Rating {
         private String Source;
