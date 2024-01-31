@@ -1,13 +1,19 @@
 package edu.escuelaing.arem.ASE.app;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.ServerSocket;
-import java.net.Socket;
+import java.io.*;
+import java.net.*;
 import java.util.Objects;
 
+
+/**
+ * Clase que crea el servidor HTTP
+ */
 public class HttpServer {
+
+    /**
+     * Método principal de la clase que inicia el servidor y escucha conexiones en el puerto 35000.
+     * @param args Argumentos de línea de comandos (no utilizados).
+     * @throws IOException Si ocurre un error de entrada/salida al abrir el socket del servidor.
+     */
     public static void main(String[] args) throws IOException {
         ServerSocket serverSocket = null;
 
@@ -26,7 +32,10 @@ public class HttpServer {
         serverSocket.close();
         
     }
-
+    /**
+     * Metodo que maneja la solicitud del cliente en un nuevo hilo separado.
+     * @param clientSocket Socket del cliente.
+     */
     private static void handleRequest(Socket clientSocket) {
         try {
             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
@@ -36,6 +45,7 @@ public class HttpServer {
             while ((inputLine = in.readLine()) != null) {
                 System.out.println("Received: " + inputLine);
                 if(inputLine.contains("title?name")){
+                    // se extrae el valor del name del URL
                     String[] firstSplit = inputLine.split("=");
                     title = (firstSplit[1].split("HTTP"))[0];
                 }
@@ -43,18 +53,12 @@ public class HttpServer {
                     break;
                 }
             }
+            // Respuesta HTTP si la pelicula se encuentra en el cache
             if(!Objects.equals(title, "")){
                 String cachedInfo = Cache.inMemory(title);
-                outputLine = "HTTP/1.1 200 OK\r\n"
-                        + "Content-Type: application/json\r\n"
-                        + "\r\n" +
-                        "<style>\n" +
-                        "table, th, td {\n" +
-                        "  border:1px solid black;\n" +
-                        "}\n" +
-                        "</style>"+
-                        cachedInfo;
+                outputLine = cachedInfo;
             }else {
+            // Respuesta HTTP por defecto cuando se hace nueva busqueda o no se encuentra la pelicula
                 outputLine = "HTTP/1.1 200 OK\r\n" +
                 "Content-Type: text/html\r\n" +
                 "\r\n" +

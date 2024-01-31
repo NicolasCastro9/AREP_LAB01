@@ -4,17 +4,31 @@ import java.io.*;
 import java.util.HashMap;
 import java.util.List;
 
+
+/**
+ * Clase que implementa una caché  para almacenar información de películas.
+ */
 public class Cache {
+    /**
+     * HashMap que almacena la información de las películas en memoria caché.
+     */
     public static HashMap<String,String> movies = new HashMap<>();
+     /**
+     * Metodo que obtiene la información de una película desde la memoria caché o la API de OMDB cuando se busca por primera vez.
+     *
+     * @param titulo Título de la película.
+     * @return Cadena HTML con la información de la película.
+     * @throws IOException Si ocurre un error de entrada/salida al realizar la solicitud a la API.
+     */
     public static String inMemory(String titulo) throws IOException {
         String n = "";
 
     if (movies.containsKey(titulo)) {
-        // Si la información está en la memoria caché, obtén la información almacenada
+        // Si la información está en la memoria caché, se obitiene la información almacenada
         String jsonMovie = movies.get(titulo);
         n += buildHtmlFromJson(jsonMovie);
     } else {
-        // Si la información no está en el caché, realiza la solicitud a la API de OMDB
+        // Si la información no está en el caché, se realiza la solicitud a la API de OMDB
         String jsonMovie = HttpConnection.getMovie(titulo);
         movies.put(titulo, jsonMovie);
         n += buildHtmlFromJson(jsonMovie);
@@ -23,11 +37,18 @@ public class Cache {
     // Devuelve la cadena construida
     return n;
     }
+
+    /**
+     * Metodo que construye una cadena HTML a partir de la información de la película en formato JSON.
+     *
+     * @param jsonMovie Información de la película en formato JSON.
+     * @return Cadena HTML con la información de la película.
+     */
     private static String buildHtmlFromJson(String jsonMovie) {
         Gson gson = new Gson();
         MovieInfo movieInfo = gson.fromJson(jsonMovie, MovieInfo.class);
     
-        // Construye la cadena con la información de la película
+        // S e construye la cadena con la información de la película
         StringBuilder htmlBuilder = new StringBuilder();
         htmlBuilder.append("<strong>Title:</strong> ").append(movieInfo.getTitle()).append("<br>");
         htmlBuilder.append("<strong>Year:</strong> ").append(movieInfo.getYear()).append("<br>");
