@@ -32,7 +32,6 @@ public class HttpServer {
         try {
             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
-            StringBuilder request = new StringBuilder();
             String inputLine, outputLine;
             String title = "";
             while ((inputLine = in.readLine()) != null) {
