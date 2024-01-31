@@ -1,59 +1,63 @@
 package edu.escuelaing.arem.ASE.app;
-
 import com.google.gson.Gson;
-import java.net.*;
 import java.io.*;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
 public class Cache {
     public static HashMap<String,String> movies = new HashMap<>();
-
-    /**
-     * Busca el titulo en de la memoria
-     * @param titulo String del titulo de la pelicula
-     * @return Si el tutulo se encuentra en memoria retorna la información
-     * @throws IOException
-     */
     public static String inMemory(String titulo) throws IOException {
-        String n="";
-        if (movies.containsKey(titulo)){
-            n += movies.get(titulo);
-        }else{
-            String jsonMovie = HttpConnection.getMovie(titulo);
-            Gson gson = new Gson();
-            MovieInfo movieInfo = gson.fromJson(jsonMovie, MovieInfo.class);
-            movies.put(titulo,n);
+        String n = "";
 
-             n += "<strong>Title:</strong> " + movieInfo.getTitle() + "<br>";
-            n += "<strong>Year:</strong> " + movieInfo.getYear() + "<br>";
-            n += "<strong>Rated:</strong> " + movieInfo.getRated() + "<br>";
-            n += "<strong>Released:</strong> " + movieInfo.getReleased() + "<br>";
-            n += "<strong>Runtime:</strong> " + movieInfo.getRuntime() + "<br>";
-            n += "<strong>Genre:</strong> " + movieInfo.getGenre() + "<br>";
-            n += "<strong>Director:</strong> " + movieInfo.getDirector() + "<br>";
-            n += "<strong>Writer:</strong> " + movieInfo.getWriter() + "<br>";
-            n += "<strong>Actors:</strong> " + movieInfo.getActors() + "<br>";
-            n += "<strong>Plot:</strong> " + movieInfo.getPlot() + "<br>";
-            n += "<strong>Language:</strong> " + movieInfo.getLanguage() + "<br>";
-            n += "<strong>Country:</strong> " + movieInfo.getCountry() + "<br>";
-            n += "<strong>Awards:</strong> " + movieInfo.getAwards() + "<br>";
-            n += "<strong>BoxOffice:</strong> " + movieInfo.getBoxOffice() + "<br>";
+    if (movies.containsKey(titulo)) {
+        // Si la información está en la memoria caché, obtén la información almacenada
+        String jsonMovie = movies.get(titulo);
+        n += buildHtmlFromJson(jsonMovie);
+    } else {
+        // Si la información no está en el caché, realiza la solicitud a la API de OMDB
+        String jsonMovie = HttpConnection.getMovie(titulo);
+        movies.put(titulo, jsonMovie);
+        n += buildHtmlFromJson(jsonMovie);
+    }
 
-            String posterUrl = movieInfo.getPoster();
-            if (posterUrl != null && !posterUrl.isEmpty()) {
-                n += "<img src=\"" + posterUrl + "\" alt=\"Poster\"><br>";
-            }
-
-            List<MovieInfo.Rating> ratings = movieInfo.getRatings();
-            if (ratings != null && !ratings.isEmpty()) {
-                n += "<strong>Ratings:</strong><br>";
-                for (MovieInfo.Rating rating : ratings) {
-                    n += "&emsp;<strong>" + rating.getSource() + ":</strong> " + rating.getValue() + "<br>";
-                }
+    // Devuelve la cadena construida
+    return n;
+    }
+    private static String buildHtmlFromJson(String jsonMovie) {
+        Gson gson = new Gson();
+        MovieInfo movieInfo = gson.fromJson(jsonMovie, MovieInfo.class);
+    
+        // Construye la cadena con la información de la película
+        StringBuilder htmlBuilder = new StringBuilder();
+        htmlBuilder.append("<strong>Title:</strong> ").append(movieInfo.getTitle()).append("<br>");
+        htmlBuilder.append("<strong>Year:</strong> ").append(movieInfo.getYear()).append("<br>");
+        htmlBuilder.append("<strong>Rated:</strong> ").append(movieInfo.getRated()).append("<br>");
+        htmlBuilder.append("<strong>Released:</strong> ").append(movieInfo.getReleased()).append("<br>");
+        htmlBuilder.append("<strong>Runtime:</strong> ").append(movieInfo.getRuntime()).append("<br>");
+        htmlBuilder.append("<strong>Genre:</strong> ").append(movieInfo.getGenre()).append("<br>");
+        htmlBuilder.append("<strong>Director:</strong> ").append(movieInfo.getDirector()).append("<br>");
+        htmlBuilder.append("<strong>Writer:</strong> ").append(movieInfo.getWriter()).append("<br>");
+        htmlBuilder.append("<strong>Actors:</strong> ").append(movieInfo.getActors()).append("<br>");
+        htmlBuilder.append("<strong>Plot:</strong> ").append(movieInfo.getPlot()).append("<br>");
+        htmlBuilder.append("<strong>Language:</strong> ").append(movieInfo.getLanguage()).append("<br>");
+        htmlBuilder.append("<strong>Country:</strong> ").append(movieInfo.getCountry()).append("<br>");
+        htmlBuilder.append("<strong>Awards:</strong> ").append(movieInfo.getAwards()).append("<br>");
+        htmlBuilder.append("<strong>BoxOffice:</strong> ").append(movieInfo.getBoxOffice()).append("<br>");
+    
+        String posterUrl = movieInfo.getPoster();
+        if (posterUrl != null && !posterUrl.isEmpty()) {
+            htmlBuilder.append("<img src=\"").append(posterUrl).append("\" alt=\"Poster\"><br>");
+        }
+    
+        List<MovieInfo.Rating> ratings = movieInfo.getRatings();
+        if (ratings != null && !ratings.isEmpty()) {
+            htmlBuilder.append("<strong>Ratings:</strong><br>");
+            for (MovieInfo.Rating rating : ratings) {
+                htmlBuilder.append("&emsp;<strong>").append(rating.getSource()).append(":</strong> ").append(rating.getValue()).append("<br>");
             }
         }
-        return n;
+    
+        return htmlBuilder.toString();
     }
+    
 }

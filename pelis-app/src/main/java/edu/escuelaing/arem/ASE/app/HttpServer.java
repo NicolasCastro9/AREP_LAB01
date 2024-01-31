@@ -18,7 +18,6 @@ public class HttpServer {
             while (true) {
                 Socket clientSocket = serverSocket.accept();
                 new Thread(() -> handleRequest(clientSocket)).start();
-                handleRequest(clientSocket);
             }
         } catch (IOException e) {
             System.err.println("Could not listen on port: 35000.");
@@ -45,6 +44,7 @@ public class HttpServer {
                 }
             }
             if(!Objects.equals(title, "")){
+                String cachedInfo = Cache.inMemory(title);
                 outputLine = "HTTP/1.1 200 OK\r\n"
                         + "Content-Type: application/json\r\n"
                         + "\r\n" +
@@ -53,7 +53,7 @@ public class HttpServer {
                         "  border:1px solid black;\n" +
                         "}\n" +
                         "</style>"+
-                        Cache.inMemory(title);
+                        cachedInfo;
             }else {
                 outputLine = "HTTP/1.1 200 OK\r\n" +
                 "Content-Type: text/html\r\n" +
@@ -98,7 +98,7 @@ public class HttpServer {
                 "    <body>\n" +
                 "        <center><h1>MOVIE NAME</h1></center>\n" +
                 "        <center><form action=\"/hello\">\n" +
-                "            <center><label for=\"name\">Titulo:</label><br></center>\n" +
+                "            <center><label for=\"name\">TITLE:</label><br></center>\n" +
                 "            <input type=\"text\" id=\"name\" name=\"name\" value=\"John\"><br><br>\n" +
                 "            <input type=\"button\" value=\"Submit\" onclick=\"loadGetMsg()\">\n" +
                 "        </form></center>\n" +

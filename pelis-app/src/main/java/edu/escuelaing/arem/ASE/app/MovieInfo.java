@@ -20,7 +20,6 @@ public class MovieInfo {
     private String BoxOffice;
     private List<Rating> Ratings;
 
-    // Agregar getters para cada atributo
 
     public String getTitle() {
         return Title;
