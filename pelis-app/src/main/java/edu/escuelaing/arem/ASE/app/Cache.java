@@ -48,7 +48,7 @@ public class Cache {
         Gson gson = new Gson();
         MovieInfo movieInfo = gson.fromJson(jsonMovie, MovieInfo.class);
     
-        // S e construye la cadena con la información de la película
+        // Se construye la cadena con la información de la película
         StringBuilder htmlBuilder = new StringBuilder();
         htmlBuilder.append("<strong>Title:</strong> ").append(movieInfo.getTitle()).append("<br>");
         htmlBuilder.append("<strong>Year:</strong> ").append(movieInfo.getYear()).append("<br>");

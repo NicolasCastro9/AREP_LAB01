@@ -54,7 +54,7 @@ public class HttpServer {
                 }
             }
             // Respuesta HTTP si la pelicula se encuentra en el cache
-            if(!Objects.equals(title, "")){
+            if(!title.isEmpty()){
                 String cachedInfo = Cache.inMemory(title);
                 outputLine = cachedInfo;
             }else {
@@ -65,7 +65,7 @@ public class HttpServer {
                 "<!DOCTYPE html>\n" +
                 "<html>\n" +
                 "    <head>\n" +
-                "        <title>Form Example</title>\n" +
+                "        <title>Movie Search</title>\n" +
                 "        <meta charset=\"UTF-8\">\n" +
                 "        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
                 "        <style>\n" +
@@ -103,7 +103,7 @@ public class HttpServer {
                 "        <center><h1>MOVIE NAME</h1></center>\n" +
                 "        <center><form action=\"/hello\">\n" +
                 "            <center><label for=\"name\">TITLE:</label><br></center>\n" +
-                "            <input type=\"text\" id=\"name\" name=\"name\" value=\"John\"><br><br>\n" +
+                "            <input type=\"text\" id=\"name\" name=\"name\" value=\"Guardians of the galaxy\"><br><br>\n" +
                 "            <input type=\"button\" value=\"Submit\" onclick=\"loadGetMsg()\">\n" +
                 "        </form></center>\n" +
                 "        <div id=\"getrespmsg\"></div>\n" +
