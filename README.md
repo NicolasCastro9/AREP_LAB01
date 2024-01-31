@@ -2,14 +2,13 @@
 
 Este es un proyecto Java que utiliza Maven para gestionar dependencias y construir el código. El proyecto realiza conexiones HTTP a la API de OMDB para obtener información sobre películas y utiliza una memoria caché para almacenar la información obtenida.
 
-## Configuración del Entorno
+## Pre-Requisitos
 
 Asegúrate de tener instalado Java y Maven en tu máquina antes de ejecutar el proyecto.
 
 ## Instrucciones de Uso
 
 1. Clona el repositorio a tu máquina local:
-
    ```
    git clone https://github.com/NicolasCastro9/AREP_LAB01.git
    ```
@@ -21,10 +20,19 @@ Asegúrate de tener instalado Java y Maven en tu máquina antes de ejecutar el p
   ```
    mvn clean install
   ```
+4. Desde la línea de comandos, ejecuta el siguiente comando Maven:
+  ```
+   mvn exec:java
+  ```
+5. En el navegador de Mozilla Firefox escribir la siguiente ruta para ver la funcionalidad de la aplicación
+  ```
+   http://localhost:35000/
+  ```
+![image](https://github.com/NicolasCastro9/AREP_LAB01/assets/98556822/301caaa6-f0e6-4cb1-af1f-3e0c658115ed)
 
- ```
-java -jar target/miprimera-app-1.0-SNAPSHOT.jar
- ```
+![image](https://github.com/NicolasCastro9/AREP_LAB01/assets/98556822/26c12aab-1d92-4b00-a82e-111ca790ef9e)
+
+
 
    
 
