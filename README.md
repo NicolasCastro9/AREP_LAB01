@@ -4,6 +4,7 @@ Este es un proyecto Java que utiliza Maven para gestionar dependencias y constru
 
 
 
+
 ## Pre-Requisitos
 
 Asegúrate de tener instalado Java y Maven en tu máquina antes de ejecutar el proyecto.
@@ -40,6 +41,7 @@ Asegúrate de tener instalado Java y Maven en tu máquina antes de ejecutar el p
 
 ## Dependencias
 JUnit: Framework de pruebas unitarias para Java.
+
 Gson: Biblioteca de Google para trabajar con JSON en Java.
 
 ## Autor
