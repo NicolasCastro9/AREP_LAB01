@@ -2,8 +2,14 @@
 
 Este es un proyecto Java que utiliza Maven para gestionar dependencias y construir el código. El proyecto realiza conexiones HTTP a la API de OMDB para obtener información sobre películas y utiliza una memoria caché para almacenar la información obtenida.
 
+## Clases
+HttpServer: Esta clase implementa un servidor HTTP básico que escucha en el puerto 35000. El servidor atiende las solicitudes de los clientes y responde según la información proporcionada en esas solicitudes.
 
+Cache: Esta clase implementa un cache que actúa como una memoria para almacenar información de películas.
 
+HttpConnection: clase que se utiliza para realizar conexiones HTTP con la API de OMDB y obtener información sobre películas. 
+
+MovieInfo:  clase que representa la información de una película obtenida de la API de OMDB. 
 
 ## Pre-Requisitos
 
