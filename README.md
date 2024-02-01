@@ -43,7 +43,9 @@ Asegúrate de tener instalado Java y Maven en tu máquina antes de ejecutar el p
 
 ![image](https://github.com/NicolasCastro9/AREP_LAB01/assets/98556822/6d6f1ce3-17e7-4f46-897a-00d54562b904)
 
+## CONSTRUIDO CON
 
+MAVEN -  framework de gestión de proyectos de software
 
 ## Dependencias
 JUnit: Framework de pruebas unitarias para Java.
