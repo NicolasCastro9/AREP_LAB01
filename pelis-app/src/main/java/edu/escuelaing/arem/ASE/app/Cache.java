@@ -44,7 +44,7 @@ public class Cache {
      * @param jsonMovie Información de la película en formato JSON.
      * @return Cadena HTML con la información de la película.
      */
-    private static String buildHtmlFromJson(String jsonMovie) {
+    static String buildHtmlFromJson(String jsonMovie) {
         Gson gson = new Gson();
         MovieInfo movieInfo = gson.fromJson(jsonMovie, MovieInfo.class);
     
